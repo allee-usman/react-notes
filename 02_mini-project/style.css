@@ -1,0 +1,109 @@
+a {
+	font-weight: 500;
+	color: white;
+	text-decoration: inherit;
+}
+a:hover {
+	color: rgba(255, 255, 255, 0.75);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	min-width: 320px;
+	min-height: 100vh;
+	font-family: "Poppins", Helvetica, sans-serif;
+	background: #27292c;
+	color: white;
+}
+
+h1 {
+	margin-top: 30px;
+}
+.header {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	align-items: center;
+	padding: 10px 20px;
+    background-color: #21222A;
+}
+
+.header-logo-container {
+	display: flex;
+	column-gap: 7px;
+	align-items: center;
+}
+
+.header-logo-container span {
+	color: #61dbfb;
+	font-size: 1.25rem;
+	font-weight: 900;
+}
+
+.header-logo {
+	width: 40px;
+}
+
+.nav-list {
+	list-style: none;
+	padding: 0;
+	display: flex;
+	flex-direction: row;
+	column-gap: 10px;
+}
+
+.reason-list {
+	margin-bottom: 10px;
+}
+
+main {
+    padding: 20px;
+    background-image: url('./src/assets/react-logo-half.png');
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: 70%;
+    background-size: 120px;
+    filter: grayscale(100%) brightness(4.5) contrast(1.1);
+
+}
+
+main h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+.facts-list {
+    max-width: 400px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.facts-list li {
+    line-height: 1.125rem;
+}
+
+.facts-list li::marker {
+    color: #61dbfb;
+    font-size: 1.25rem;
+}
+
+.footer {
+	background-color: black;
+	margin-top: 30px;
+	padding: 10px 0;
+	text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.company-name {
+	color: #61dbfb;
+}
