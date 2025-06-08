@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import bikeImage from './assets/bike.jpg';
 
 function App() {
-  const [count, setCount] = useState(0)
+	function handleClick() {
+		console.log('I was clicked!');
+	}
+	function handleMouseOver() {
+		console.log('I was hovered!');
+	}
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+	return (
+		<main className="container">
+			<img src={bikeImage} alt="bike" onMouseOver={handleMouseOver} />
+			{/* <button
+				onClick={function () {
+					console.log('Button clicked!');
+				}}
+			>
+				Click me!
+			</button> */}
+			{/* Note: Try to make a separate function on the top level, and pass it in event listner */}
+			{/* if we pass handleClick(), it will only run once when we hit save. i.e. */}
+			{/* <button onClick={handleClick()}>Click Me!</button> */}
+
+			{/* instead pass only name of the functuion i.e. */}
+			<button onClick={handleClick}>Click Me!</button>
+		</main>
+	);
 }
 
-export default App
+export default App;
