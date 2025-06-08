@@ -14,13 +14,13 @@ function Header() {
 			<nav>
 				<ul className="nav-list">
 					<li>
-						<a href="#">Pricing</a>
-					</li>
-					<li>
-						<a href="#">About</a>
+						<a href="#">Blogs</a>
 					</li>
 					<li>
 						<a href="#">Contact</a>
+					</li>
+					<li>
+						<a href="#">About</a>
 					</li>
 				</ul>
 			</nav>
