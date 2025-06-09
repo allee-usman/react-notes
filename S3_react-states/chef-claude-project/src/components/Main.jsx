@@ -1,14 +1,7 @@
+import { useState } from 'react';
+
 function Main() {
-	let ingredients = [
-		'Oregano',
-		'Basil',
-		'Garlic',
-		'Olive Oil',
-		'Salt',
-		'Pepper',
-		'Tomato Sauce',
-		'Chicken Broth',
-	];
+	const [ingredients, setNewIngredients] = useState([]);
 
 	const ingredientList = ingredients.map((ingredient) => {
 		return <li key={ingredient}>{ingredient}</li>;
@@ -17,11 +10,20 @@ function Main() {
 	function handleSubmit(event) {
 		event.preventDefault();
 
-		const formData = new FormData(event.currentTarget);
+		const form = event.currentTarget;
+		const formData = new FormData(form);
 		const newIngredient = formData.get('ingredient-field').trim();
 
-		ingredients.push(newIngredient);
-		console.log(ingredients);
+		// console.log(formData);
+		// console.log(ingredients);
+
+		if (newIngredient) {
+			setNewIngredients((prevIngredients) => [
+				...prevIngredients,
+				newIngredient,
+			]);
+		}
+		form.reset();
 	}
 
 	return (
