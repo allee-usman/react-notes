@@ -18,23 +18,35 @@ function App() {
 	//Note: This function will not recieve `event` object, but direclty recieve FormData.
 	function signUp(formData) {
 		// console.log('Form Submitted using action attribute!');
-		const email = formData.get('email');
-		console.log(email);
-		const password = formData.get('password');
-		console.log(password);
+		// const email = formData.get('email');
+		// console.log(email);
+		// const password = formData.get('password');
+		// console.log(password);
 
-		const description = formData.get('description');
-		console.log(description);
+		// const description = formData.get('description');
+		// console.log(description);
 
-		const gender = formData.get('gender');
-		console.log(gender);
+		// const gender = formData.get('gender');
+		// console.log(gender);
 
-		// const hobbies = formData.get('hobbies'); // will return only one of the checked values
-		const hobbies = formData.getAll('hobbies'); // use `getAll()` in order to get all
-		console.log(hobbies);
+		// // const hobbies = formData.get('hobbies'); // will return only one of the checked values
+		// const hobbies = formData.getAll('hobbies'); // use `getAll()` in order to get all
+		// console.log(hobbies);
 
-		const favColor = formData.getAll('favColor'); //Info: if multiple=false in select, use `get()`. It is also ok to use `getAll()` but the difference will be in this case it returns an array no matter if the select count is 1.
-		console.log(favColor);
+		// const favColor = formData.getAll('favColor'); //Info: if multiple=false in select, use `get()`. It is also ok to use `getAll()` but the difference will be in this case it returns an array no matter if the select count is 1.
+		// console.log(favColor);
+
+		const data = Object.fromEntries(formData); // this will return an object containg name of all the inputs against their values
+		console.log(data); // {email: ali@usman.com, password: ali@123, ....}
+
+		//Note: `Object.fromEntries(formData)` returns only single value for each input, so when want to recieve multiple values, we have to do it manually i.e.
+
+		const hobbies = formData.getAll('hobbies');
+		const completeData = {
+			...data,
+			hobbies,
+		};
+		console.log(completeData);
 	}
 
 	return (
