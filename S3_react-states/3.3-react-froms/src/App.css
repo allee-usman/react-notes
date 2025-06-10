@@ -23,6 +23,9 @@ input {
 }
 button {
 	margin-top: 10px;
+	align-self: flex-start;
+	width: 100%;
+	background-color: cadetblue;
 }
 fieldset {
 	display: flex;
@@ -33,5 +36,9 @@ fieldset {
 label {
 	display: flex;
 	justify-content: start;
+	width: 100%;
+}
+select {
+	/* align-self: flex-start; */
 	width: 100%;
 }

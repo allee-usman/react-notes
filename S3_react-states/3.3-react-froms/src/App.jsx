@@ -32,6 +32,9 @@ function App() {
 		// const hobbies = formData.get('hobbies'); // will return only one of the checked values
 		const hobbies = formData.getAll('hobbies'); // use `getAll()` in order to get all
 		console.log(hobbies);
+
+		const favColor = formData.getAll('favColor'); //Info: if multiple=false in select, use `get()`. It is also ok to use `getAll()` but the difference will be in this case it returns an array no matter if the select count is 1.
+		console.log(favColor);
 	}
 
 	return (
@@ -108,6 +111,19 @@ function App() {
 						Gardening
 					</label>
 				</fieldset>
+
+				<label htmlFor="fav-color">What is your favourite color?</label>
+				<select name="favColor" id="fav-color" multiple>
+					<option value="" disabled>
+						-- Choose a color --
+					</option>{' '}
+					{/* will not show up if multiple i true */}
+					<option value="blue">Blue</option>
+					<option value="red">ٌRed</option>
+					<option value="green">Green</option>
+					<option value="olive">Olive</option>
+					<option value="orange">Orange</option>
+				</select>
 
 				<button>Submit</button>
 			</form>
