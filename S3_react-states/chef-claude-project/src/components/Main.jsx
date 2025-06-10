@@ -7,11 +7,7 @@ function Main() {
 		return <li key={ingredient}>{ingredient}</li>;
 	});
 
-	function handleSubmit(event) {
-		event.preventDefault();
-
-		const form = event.currentTarget;
-		const formData = new FormData(form);
+	function handleFormSubmit(formData) {
 		const newIngredient = formData.get('ingredient-field').trim();
 
 		// console.log(formData);
@@ -23,12 +19,11 @@ function Main() {
 				newIngredient,
 			]);
 		}
-		form.reset();
 	}
 
 	return (
 		<main>
-			<form action="#" onSubmit={handleSubmit}>
+			<form action={handleFormSubmit}>
 				<input
 					type="text"
 					name="ingredient-field"
