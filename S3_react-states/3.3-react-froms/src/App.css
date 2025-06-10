@@ -19,10 +19,19 @@
 	align-items: start;
 }
 input {
-	width: 100%;
 	padding: 5px 10px;
-	transition: border-color 0.25s;
 }
 button {
 	margin-top: 10px;
+}
+fieldset {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	width: 100%;
+}
+label {
+	display: flex;
+	justify-content: start;
+	width: 100%;
 }

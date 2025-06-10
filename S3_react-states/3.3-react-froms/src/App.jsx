@@ -25,6 +25,9 @@ function App() {
 
 		const description = formData.get('description');
 		console.log(description);
+
+		const gender = formData.get('gender');
+		console.log(gender);
 	}
 
 	return (
@@ -57,8 +60,33 @@ function App() {
 
 				<div className="input-field">
 					<label htmlFor="description">Description:</label>
-					<textarea name="description" id="description"></textarea>
+					<textarea
+						name="description"
+						id="description"
+						defaultValue="this is some description"
+					></textarea>
 				</div>
+
+				<fieldset>
+					<legend>Gender</legend>
+					<label>
+						<input
+							type="radio"
+							name="gender"
+							defaultValue="male"
+							defaultChecked={true}
+						/>
+						Male
+					</label>
+					<label>
+						<input type="radio" name="gender" defaultValue="female" />
+						Female
+					</label>
+					<label>
+						<input type="radio" name="gender" defaultValue="other" />
+						Prefer not to say
+					</label>
+				</fieldset>
 
 				<button>Submit</button>
 			</form>
