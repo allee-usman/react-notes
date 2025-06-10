@@ -22,6 +22,9 @@ function App() {
 		console.log(email);
 		const password = formData.get('password');
 		console.log(password);
+
+		const description = formData.get('description');
+		console.log(description);
 	}
 
 	return (
@@ -37,13 +40,26 @@ function App() {
 						id="email"
 						name="email"
 						placeholder="ali@gmail.com"
+						defaultValue="ali@usman.com"
 						required
 					/>
 				</div>
 				<div className="input-field">
 					<label htmlFor="password">Password:</label>
-					<input type="password" id="password" name="password" required />
+					<input
+						type="password"
+						id="password"
+						name="password"
+						defaultValue="ali@usman1122"
+						required
+					/>
 				</div>
+
+				<div className="input-field">
+					<label htmlFor="description">Description:</label>
+					<textarea name="description" id="description"></textarea>
+				</div>
+
 				<button>Submit</button>
 			</form>
 		</section>
