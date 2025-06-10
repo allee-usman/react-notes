@@ -1,0 +1,13 @@
+#root {
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 2rem 0;
+}
+
+.joke-container {
+	padding: 5px 10px;
+}
+.setup,
+.punchline {
+	margin: 0 0 10px;
+}
