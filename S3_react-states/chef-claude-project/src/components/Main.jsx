@@ -37,6 +37,13 @@ function Main() {
 			<section className="ingredients-list-container">
 				<h2>Ingredients on hnad</h2>
 				<ul className="ingredients-list">{ingredientList}</ul>
+				<div className="get-recipe-container">
+					<div>
+						<h2>Ready for a recipe?</h2>
+						<p>Generate a recipe from your list of ingredients.</p>
+					</div>
+					<button>Get a recipe</button>
+				</div>
 			</section>
 		</main>
 	);
