@@ -28,6 +28,10 @@ function App() {
 
 		const gender = formData.get('gender');
 		console.log(gender);
+
+		// const hobbies = formData.get('hobbies'); // will return only one of the checked values
+		const hobbies = formData.getAll('hobbies'); // use `getAll()` in order to get all
+		console.log(hobbies);
 	}
 
 	return (
@@ -85,6 +89,23 @@ function App() {
 					<label>
 						<input type="radio" name="gender" defaultValue="other" />
 						Prefer not to say
+					</label>
+				</fieldset>
+
+				<fieldset>
+					<legend>Hobbies</legend>
+					{/* Info: we can use multiple `defaultChecked` attribute on checkboxes */}
+					<label>
+						<input type="checkbox" name="hobbies" defaultValue="cocking" />
+						Cocking
+					</label>
+					<label>
+						<input type="checkbox" name="hobbies" defaultValue="reading" />
+						Reading
+					</label>
+					<label>
+						<input type="checkbox" name="hobbies" defaultValue="gardening" />
+						Gardening
 					</label>
 				</fieldset>
 
