@@ -21,6 +21,10 @@ main {
 	border: 1px solid lightgray;
 	border-radius: 10px;
 	height: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .card .avatar {
@@ -36,6 +40,7 @@ main {
 
 .card .info {
 	padding: 10px;
+	text-align: center;
 }
 
 .card .favorite {
