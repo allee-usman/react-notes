@@ -137,7 +137,7 @@ function App() {
 					<option value="orange">Orange</option>
 				</select>
 
-				<button>Submit</button>
+				<button type="submit">Submit</button>
 			</form>
 		</section>
 	);
