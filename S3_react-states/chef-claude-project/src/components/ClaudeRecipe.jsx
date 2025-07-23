@@ -1,16 +1,11 @@
-export default function Recipe() {
+export default function Recipe({ recipe }) {
+	console.log(recipe);
+
 	return (
 		<section className="suggested-recipe-container">
 			<h2>Suggested Recipe</h2>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
-				dolor quis nulla id, excepturi reprehenderit maiores repellat dolores
-				tempore quidem inventore quos fugiat dolore natus nobis tenetur
-				voluptate in possimus cupiditate at nemo eum. Facere veniam, laborum,
-				labore quos asperiores libero eaque sequi vitae quas minima recusandae,
-				necessitatibus nam illum?
-			</p>
-			<h3>Ingredients:</h3>
+			<p>{recipe}</p>
+			{/* <h3>Ingredients:</h3>
 			<ul className="list">
 				<li>Ingredient 1</li>
 				<li>Ingredient 2</li>
@@ -26,7 +21,7 @@ export default function Recipe() {
 				<li>Instruction 4</li>
 				<li>Instruction 5</li>
 			</ol>
-			<p>Enjoy!</p>
+			<p>Enjoy!</p> */}
 		</section>
 	);
 }

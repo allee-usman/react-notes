@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import RecipeSection from '../components/ClaudeRecipe';
 import IngredientsList from '../components/IngredientsList';
+import { getRecipeFromMistral } from '../ai';
 function Main() {
 	const [ingredients, setNewIngredients] = useState([]);
+	const [recipe, setRecipe] = useState('');
 
 	function handleFormSubmit(formData) {
 		const newIngredient = formData.get('ingredient-field').trim();
@@ -19,10 +21,9 @@ function Main() {
 	}
 	const showIngredientSec = ingredients.length ? true : false;
 	// console.log(showIngredientSec);
-	const [recipeShown, setRecipeShown] = useState(false);
 
-	function toggleShowRecipe() {
-		setRecipeShown((prevShowStatus) => !prevShowStatus);
+	async function getRecipe() {
+		setRecipe(await getRecipeFromMistral(ingredients));
 	}
 
 	return (
@@ -39,12 +40,9 @@ function Main() {
 				<button type="submit">+ Add Ingredient</button>
 			</form>
 			{showIngredientSec && (
-				<IngredientsList
-					ingredients={ingredients}
-					toggleShowRecipe={toggleShowRecipe}
-				/>
+				<IngredientsList ingredients={ingredients} getRecipe={getRecipe} />
 			)}
-			{recipeShown && <RecipeSection />}
+			{recipe && <RecipeSection recipe={recipe} />}
 		</main>
 	);
 }
