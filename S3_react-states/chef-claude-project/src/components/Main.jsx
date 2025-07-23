@@ -3,7 +3,14 @@ import RecipeSection from '../components/ClaudeRecipe';
 import IngredientsList from '../components/IngredientsList';
 import { getRecipeFromMistral } from '../ai';
 function Main() {
-	const [ingredients, setNewIngredients] = useState([]);
+	const [ingredients, setNewIngredients] = useState([
+		'Chicken',
+		'Burger Bun',
+		'Egg',
+		'Cheese',
+		'Tomato',
+		'Lettuce',
+	]);
 	const [recipe, setRecipe] = useState('');
 
 	function handleFormSubmit(formData) {
