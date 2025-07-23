@@ -1,0 +1,195 @@
+a {
+	font-weight: 500;
+	color: #333446;
+	text-decoration: inherit;
+}
+a:hover {
+	color: rgba(0, 0, 0, 0.5);
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+::placeholder {
+	font-size: 14px;
+}
+h2 {
+	font-size: 1.5rem;
+	margin-bottom: 15px;
+	font-weight: 700;
+}
+h3 {
+	font-size: 1.2rem;
+	margin-top: 30px;
+	color: #393b3d;
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+p {
+	text-align: justify;
+	line-height: 1.35rem;
+}
+
+.list {
+	list-style-position: inside;
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
+	max-width: 992px;
+	color: #393e46;
+}
+
+ol {
+	margin-bottom: 20px;
+}
+body {
+	margin: 0;
+	min-width: 320px;
+	min-height: 100vh;
+	font-family: 'Poppins', Helvetica, sans-serif;
+	background-color: #f5f7f8;
+	color: black;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	align-items: center;
+	padding: 10px 20px;
+	background-color: #ffffff;
+	color: #212529;
+	box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1),
+		0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+}
+
+.header-logo-container {
+	display: flex;
+	column-gap: 7px;
+	align-items: center;
+}
+
+.header-logo-container span {
+	color: #333446;
+	font-size: 1.35rem;
+	font-weight: 900;
+	letter-spacing: 1px;
+}
+
+.header-logo {
+	width: 50px;
+}
+
+.nav-list {
+	list-style: none;
+	padding: 0;
+	display: flex;
+	flex-direction: row;
+	column-gap: 10px;
+}
+
+/* form styling */
+form {
+	display: flex;
+	column-gap: 10px;
+	width: 100%;
+	max-width: 992px;
+	height: auto;
+	margin: 0 auto;
+	padding: 40px 40px;
+	justify-content: center;
+	align-items: center;
+}
+form > input[type='text'] {
+	flex-grow: 1;
+	height: 35px;
+	border: 1px solid #a8a8a8;
+	border-radius: 5px;
+	padding: 0 10px;
+	font-size: 16px;
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+form > button {
+	height: 35px;
+	border: none;
+	border-radius: 5px;
+	color: white;
+	background-color: #181820;
+	font-size: 14px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	font-family: 'Poppins', Helvetica, sans-serif;
+	padding: 5px 20px;
+	font-weight: 500;
+}
+form > button:hover {
+	background-color: #333446;
+}
+
+@media (max-width: 450px) {
+	form {
+		flex-direction: column;
+		row-gap: 10px;
+		height: auto;
+	}
+	form > input[type='text'] {
+		width: 100%;
+	}
+	form > button {
+		flex-grow: 1;
+		width: 100%;
+	}
+}
+/* section styling */
+section {
+	padding: 0px 40px;
+	margin-bottom: 40px;
+}
+
+.get-recipe-container {
+	background-color: #e6e3d6;
+	padding: 20px 30px;
+	display: flex;
+	column-gap: 10px;
+	justify-content: space-between;
+	border-radius: 10px;
+	margin-top: 30px;
+}
+.get-recipe-container h2 {
+	font-size: 1rem;
+	font-weight: 500;
+	margin-bottom: 0;
+}
+.get-recipe-container p {
+	font-size: 0.75rem;
+	color: #777a7f;
+}
+.get-recipe-container button {
+	border: none;
+	padding: 5px 10px;
+	outline: none;
+	background-color: #e4bd0e;
+	border-radius: 7px;
+	font-family: inherit;
+	cursor: pointer;
+	transition: 0.3s ease-in;
+	font-weight: 500;
+}
+.get-recipe-container button:hover {
+	background-color: #f7a33d;
+}
+.suggested-recipe-container {
+	color: #262d38;
+	line-height: 28px;
+	font-weight: 400;
+}
+.suggested-recipe-container p {
+	margin-bottom: 20px;
+}
+.suggested-recipe-container ul li,
+.suggested-recipe-container ol li {
+	margin-bottom: 8px;
+	list-style-position: inside;
+}
