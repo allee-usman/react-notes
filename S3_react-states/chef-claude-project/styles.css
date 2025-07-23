@@ -180,3 +180,16 @@ section {
 .get-recipe-container button:hover {
 	background-color: #f7a33d;
 }
+.suggested-recipe-container {
+	color: #262d38;
+	line-height: 28px;
+	font-weight: 400;
+}
+.suggested-recipe-container p {
+	margin-bottom: 20px;
+}
+.suggested-recipe-container ul li,
+.suggested-recipe-container ol li {
+	margin-bottom: 8px;
+	list-style-position: inside;
+}
