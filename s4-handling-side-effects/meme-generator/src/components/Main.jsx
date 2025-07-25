@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 export default function Main() {
-	const [memeText, setMemeText] = useState({
+	const [meme, setMeme] = useState({
 		topText: 'One does not simply',
 		bottomText: 'Walk into Mordor',
 		imageUrl: 'http://i.imgflip.com/1bij.jpg',
@@ -14,7 +14,7 @@ export default function Main() {
 		// console.log(event.target.value);
 
 		const { value, name } = event.currentTarget;
-		setMemeText((prevMeme) => {
+		setMeme((prevMeme) => {
 			return {
 				...prevMeme,
 				[name]: value,
@@ -29,10 +29,15 @@ export default function Main() {
 			.then((resData) => setAllMemes(resData.data.memes));
 	}, []);
 
-	console.log(allMemes);
-
-	// const randomNum = Math.floor(Math.random() * 10);
-	// // console.log(randomNum);
+	// console.log(allMemes);
+	function getMemeImage() {
+		const randomNum = Math.floor(Math.random() * allMemes.length);
+		const memeUrl = allMemes[randomNum].url;
+		setMeme((prevMeme) => ({
+			...prevMeme,
+			imageUrl: memeUrl,
+		}));
+	}
 
 	return (
 		<main>
@@ -41,10 +46,10 @@ export default function Main() {
 					Top Text
 					<input
 						type="text"
-						placeholder={memeText.topText}
+						placeholder={meme.topText}
 						name="topText"
 						onChange={handleChange}
-						value={memeText.topText}
+						value={meme.topText}
 					/>
 				</label>
 
@@ -52,18 +57,18 @@ export default function Main() {
 					Bottom Text
 					<input
 						type="text"
-						placeholder={memeText.bottomText}
+						placeholder={meme.bottomText}
 						name="bottomText"
 						onChange={handleChange}
-						value={memeText.bottomText}
+						value={meme.bottomText}
 					/>
 				</label>
-				<button>Get a new meme image 🖼️</button>
+				<button onClick={getMemeImage}>Get a new meme image 🖼️</button>
 			</div>
 			<div className="meme">
-				<img src={'#'} />
-				<span className="top">{memeText.topText}</span>
-				<span className="bottom">{memeText.bottomText}</span>
+				<img src={meme.imageUrl} />
+				<span className="top">{meme.topText}</span>
+				<span className="bottom">{meme.bottomText}</span>
 			</div>
 		</main>
 	);
