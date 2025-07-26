@@ -1,0 +1,25 @@
+* {
+	box-sizing: border-box;
+}
+body {
+	color: whitesmoke;
+	background-color: #172554;
+	margin: 0;
+	padding: 2rem;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+}
+
+button {
+	border: none;
+	border-radius: 5px;
+	padding: 1rem;
+	cursor: pointer;
+}
+
+h1 {
+	text-align: center;
+}
