@@ -28,10 +28,16 @@ export default function App() {
 	// const [dice, setDice] = useState(diceObjectArr);
 	const [dice, setDice] = useState(generateAllNewDice());
 
-	console.log(dice);
+	// console.log(dice);
 
 	const diceElements = dice.map((dieObject) => {
-		return <Die key={dieObject.id} value={dieObject.value} />;
+		return (
+			<Die
+				key={dieObject.id}
+				value={dieObject.value}
+				isHeld={dieObject.isHeld}
+			/>
+		);
 	});
 
 	function rollDice() {
