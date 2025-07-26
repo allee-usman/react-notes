@@ -1,5 +1,6 @@
 import Die from './components/Die';
 import { useState } from 'react';
+import { nanoid } from 'nanoid';
 
 export default function App() {
 	const getRandomNumber = () => {
@@ -11,15 +12,26 @@ export default function App() {
 		// 	dice[i] = getRandomNumber();
 		// }
 		// return dice;
-		return new Array(10).fill(0).map(() => getRandomNumber());
+		return new Array(10)
+			.fill(0)
+			.map(() => ({ id: nanoid(), value: getRandomNumber(), isHeld: false }));
 	};
 
+	// const diceArr = generateAllNewDice();
+
+	// const diceObjectArr = diceArr.map((num) => ({
+	// 	value: num,
+	// 	isHeld: false,
+	// }));
+	// console.log(diceObjectArr);
+
+	// const [dice, setDice] = useState(diceObjectArr);
 	const [dice, setDice] = useState(generateAllNewDice());
 
-	// console.log(dice);
+	console.log(dice);
 
-	const diceElements = dice.map((num, index) => {
-		return <Die key={index} value={num} />;
+	const diceElements = dice.map((dieObject) => {
+		return <Die key={dieObject.id} value={dieObject.value} />;
 	});
 
 	function rollDice() {
