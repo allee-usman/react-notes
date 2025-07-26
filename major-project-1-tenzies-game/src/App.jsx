@@ -36,12 +36,26 @@ export default function App() {
 				key={dieObject.id}
 				value={dieObject.value}
 				isHeld={dieObject.isHeld}
+				// hold={hold}
+				// id={dieObject.id}
+				hold={() => hold(dieObject.id)}
 			/>
 		);
 	});
 
 	function rollDice() {
-		setDice(generateAllNewDice());
+		setDice((oldDice) =>
+			oldDice.map((die) =>
+				die.isHeld ? die : { ...die, value: getRandomNumber() }
+			)
+		);
+	}
+	function hold(id) {
+		setDice((prevDice) => {
+			return prevDice.map((die) =>
+				id === die.id ? { ...die, isHeld: !die.isHeld } : die
+			);
+		});
 	}
 
 	return (

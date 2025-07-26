@@ -1,6 +1,14 @@
-export default function Die({ value, isHeld }) {
+export default function Die(props) {
 	const styles = {
-		backgroundColor: isHeld ? '#59e391' : undefined,
+		backgroundColor: props.isHeld ? '#59e391' : undefined,
 	};
-	return <button style={styles}>{value}</button>;
+	return (
+		<button
+			// onClick={() => hold(id)}
+			onClick={props.hold}
+			style={styles}
+		>
+			{props.value}
+		</button>
+	);
 }
