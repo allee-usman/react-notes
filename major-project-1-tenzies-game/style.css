@@ -1,0 +1,41 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: 'Inter' sans-serif;
+	background-color: rgb(9, 9, 32);
+	padding: 40px;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+div#root {
+	height: 100%;
+}
+main {
+	background-color: whitesmoke;
+	width: 100%;
+	height: 100%;
+	border-radius: 7px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.dice-container {
+	display: grid;
+	grid-template: auto auto / repeat(5, 1fr);
+	gap: 20px;
+}
+.dice-container button {
+	width: 50px;
+	height: 50px;
+	border-radius: 7px;
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
+	border: none;
+	outline: none;
+	cursor: pointer;
+	font-size: 20px;
+	font-weight: bold;
+}
