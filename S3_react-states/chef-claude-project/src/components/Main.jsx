@@ -2,6 +2,8 @@ import { useState } from 'react';
 import RecipeSection from '../components/ClaudeRecipe';
 import IngredientsList from '../components/IngredientsList';
 import { getRecipeFromMistral } from '../ai';
+import { useRef } from 'react';
+import { useEffect } from 'react';
 function Main() {
 	const [ingredients, setNewIngredients] = useState([
 		'Chicken',
@@ -12,6 +14,15 @@ function Main() {
 		'Lettuce',
 	]);
 	const [recipe, setRecipe] = useState('');
+	const recipeSectionRef = useRef(null);
+	useEffect(() => {
+		if (recipe !== '' && recipeSectionRef.current != null) {
+			recipeSectionRef.current.scrollIntoView({
+				behavior: 'smooth',
+				block: 'start',
+			});
+		}
+	}, [recipe]);
 
 	function handleFormSubmit(formData) {
 		const newIngredient = formData.get('ingredient-field').trim();
@@ -47,7 +58,11 @@ function Main() {
 				<button type="submit">+ Add Ingredient</button>
 			</form>
 			{showIngredientSec && (
-				<IngredientsList ingredients={ingredients} getRecipe={getRecipe} />
+				<IngredientsList
+					ingredients={ingredients}
+					getRecipe={getRecipe}
+					ref={recipeSectionRef}
+				/>
 			)}
 			{recipe && <RecipeSection recipe={recipe} />}
 		</main>
