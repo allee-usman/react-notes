@@ -9,6 +9,8 @@ export default function App() {
 		return Math.ceil(Math.random() * 6);
 	};
 	const generateAllNewDice = () => {
+		console.log('generateAllNewDice was called!');
+
 		// const dice = [];
 		// for (let i = 0; i < 10; i++) {
 		// 	dice[i] = getRandomNumber();
@@ -28,7 +30,9 @@ export default function App() {
 	// console.log(diceObjectArr);
 
 	// const [dice, setDice] = useState(diceObjectArr);
-	const [dice, setDice] = useState(generateAllNewDice());
+	// const [dice, setDice] = useState(generateAllNewDice()); // generateAllNewDice() will run on every render, but set the value on first, for rest of renders, the returning value will be discarded as states are immutable.
+	//-- Solution? Lazy initialization
+	const [dice, setDice] = useState(() => generateAllNewDice());
 
 	// console.log(dice);
 	// function checkGameWon() {
@@ -55,11 +59,13 @@ export default function App() {
 	});
 
 	function rollDice() {
-		setDice((oldDice) =>
-			oldDice.map((die) =>
-				die.isHeld ? die : { ...die, value: getRandomNumber() }
-			)
-		);
+		!gameWon
+			? setDice((oldDice) =>
+					oldDice.map((die) =>
+						die.isHeld ? die : { ...die, value: getRandomNumber() }
+					)
+			  )
+			: setDice(generateAllNewDice());
 	}
 	function hold(id) {
 		setDice((prevDice) => {
