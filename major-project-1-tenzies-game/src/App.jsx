@@ -1,5 +1,5 @@
 import Die from './components/Die';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import Confetti from 'react-confetti';
 // import { useWindowSize } from 'react-use';
@@ -77,16 +77,28 @@ export default function App() {
 
 	// const { width, height } = useWindowSize();
 
+	const newGameBtnRef = useRef(null);
+	useEffect(() => {
+		if (gameWon) {
+			newGameBtnRef.current.focus();
+		}
+	}, [gameWon]);
+
 	return (
 		<main>
 			{gameWon && <Confetti />}
+			<div aria-live="polite" className="sr-only">
+				{gameWon && (
+					<p>Congratulations, You Won! Press "New Game" to start again.</p>
+				)}
+			</div>
 			<h1 className="title">Tenzies</h1>
 			<p className="instructions">
 				Roll until all dice are the same. Click each die to freeze it at its
 				current value between rolls.
 			</p>
 			<div className="dice-container">{diceElements}</div>
-			<button onClick={rollDice} className="roll-dice-btn">
+			<button onClick={rollDice} className="roll-dice-btn" ref={newGameBtnRef}>
 				{gameWon ? 'New Game' : 'Roll'}
 			</button>
 		</main>
