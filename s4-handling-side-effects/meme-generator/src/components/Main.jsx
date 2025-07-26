@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 
+
 export default function Main() {
 	const [meme, setMeme] = useState({
 		topText: 'One does not simply',
@@ -7,7 +8,9 @@ export default function Main() {
 		imageUrl: 'http://i.imgflip.com/1bij.jpg',
 	});
 
+
 	const [allMemes, setAllMemes] = useState([]);
+
 	const handleChange = (event) => {
 		// console.log('Changed!!');
 		// console.log(event); //object
@@ -22,6 +25,7 @@ export default function Main() {
 			};
 		});
 	};
+
 
 	useEffect(() => {
 		fetch('https://api.imgflip.com/get_memes')
@@ -38,7 +42,7 @@ export default function Main() {
 			imageUrl: memeUrl,
 		}));
 	}
-
+  
 	return (
 		<main>
 			<div className="form">
