@@ -33,13 +33,19 @@ export default function AssemblyEndgame() {
 	const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
 	// Elements arrays
-	const languageElements = languages.map((lang) => {
+	const languageElements = languages.map((lang, index) => {
+		const isLanguageLost = index < wrongGuessCount;
 		const styles = {
 			backgroundColor: lang.backgroundColor,
 			color: lang.color,
 		};
+		// const classNames = clsx("chip", isLanguageLost && 'lost');
+		const classNames = clsx({
+			chip: true,
+			lost: isLanguageLost,
+		});
 		return (
-			<span className="chip" style={styles} key={lang.name}>
+			<span className={classNames} style={styles} key={lang.name}>
 				{lang.name}
 			</span>
 		);
