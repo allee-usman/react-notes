@@ -30,9 +30,10 @@ export default function AssemblyEndgame() {
 		);
 	});
 
-	const letterElements = currentWord
-		.split('')
-		.map((letter, index) => <span key={index}>{letter.toUpperCase()}</span>);
+	const letterElements = currentWord.split('').map((letter, index) => {
+		const isGuessed = guessedLetters.includes(letter);
+		return <span key={index}>{isGuessed ? letter.toUpperCase() : ''}</span>;
+	});
 
 	const keyboardElements = alphabet.split('').map((letter) => {
 		const isGuessed = guessedLetters.includes(letter);
