@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { languages } from './languagesData';
+import clsx from 'clsx';
 
 /**
  * Goal: Allow the user to start guessing the letters
@@ -33,11 +34,33 @@ export default function AssemblyEndgame() {
 		.split('')
 		.map((letter, index) => <span key={index}>{letter.toUpperCase()}</span>);
 
-	const keyboardElements = alphabet.split('').map((letter) => (
-		<button onClick={() => savedGuessedLetter(letter)} key={letter}>
-			{letter.toUpperCase()}
-		</button>
-	));
+	const keyboardElements = alphabet.split('').map((letter) => {
+		const isGuessed = guessedLetters.includes(letter);
+		const isCorrect = isGuessed && currentWord.includes(letter);
+		const isWrong = isGuessed && !currentWord.includes(letter);
+
+		//Info: clsx allow us to make object of classNames to apply, where keys are name of classes we want to apply and values of those keys are boolean whether to include or not
+
+		const className = clsx({
+			'correct-guess': isCorrect,
+			'wrong-guess': isWrong,
+		});
+
+		// console.log(className);
+
+		return (
+			<button
+				// className={
+				// 	isCorrect ? 'correct-guess' : isWrong ? 'wrong-guess' : undefined
+				// }
+				className={className}
+				onClick={() => savedGuessedLetter(letter)}
+				key={letter}
+			>
+				{letter.toUpperCase()}
+			</button>
+		);
+	});
 
 	function savedGuessedLetter(newGuess) {
 		setGuessedLetters((prevGuesses) =>
