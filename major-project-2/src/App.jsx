@@ -12,12 +12,12 @@ import clsx from 'clsx';
  */
 
 export default function AssemblyEndgame() {
-	// state values
+	//# state values
 	const [currentWord, setCurrentWord] = useState('react');
 	const [guessedLetters, setGuessedLetters] = useState([]);
 	// console.log(guessedLetters);
 
-	// derived values
+	// #derived values
 	// const wrongGuessCount = countWrongGuesses();
 	// const wrongGuesses = guessedLetters.filter(
 	// 	(letter) => !currentWord.includes(letter)
@@ -27,9 +27,15 @@ export default function AssemblyEndgame() {
 	const wrongGuessCount = guessedLetters.filter(
 		(letter) => !currentWord.includes(letter)
 	).length;
-	console.log('Wrong Guess Count: ', wrongGuessCount);
+	// console.log('Wrong Guess Count: ', wrongGuessCount);
 
-	// static values
+	const isGameWon = currentWord
+		.split('')
+		.every((letter) => guessedLetters.includes(letter));
+	const isGameLost = wrongGuessCount >= languages.length - 1 ? true : false;
+	const isGameOver = isGameWon || isGameLost ? true : false;
+
+	// #static values
 	const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
 	// Elements arrays
@@ -123,7 +129,7 @@ export default function AssemblyEndgame() {
 			<section className="language-chips">{languageElements}</section>
 			<section className="word">{letterElements}</section>
 			<section className="keyboard">{keyboardElements}</section>
-			<button className="new-game">New Game</button>
+			{isGameOver && <button className="new-game">New Game</button>}
 		</main>
 	);
 }
