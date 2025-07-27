@@ -9,8 +9,6 @@ body {
 	color: #d9d9d9;
 	padding: 20px;
 	height: 100vh;
-	display: flex;
-	justify-content: center;
 }
 main {
 	display: flex;
@@ -39,7 +37,8 @@ section.game-status {
 	flex-direction: column;
 	align-items: center;
 	color: #f9f4da;
-	width: 450px;
+	max-width: 400px;
+	width: 100%;
 	border-radius: 4px;
 	margin-block: 30px;
 }
@@ -65,7 +64,7 @@ section.language-chips {
 	flex-wrap: wrap;
 	gap: 5px;
 	justify-content: center;
-	max-width: 350px;
+	max-width: 400px;
 	margin-bottom: 36px;
 }
 
