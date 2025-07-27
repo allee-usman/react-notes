@@ -30,9 +30,7 @@ header > p {
 	max-width: 350px;
 	color: #8e8e8e;
 }
-
 section.game-status {
-	background-color: #fff;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -51,6 +49,12 @@ section.game-status.lost {
 
 section.game-status > p {
 	margin: 5px;
+}
+section.game-status > p.farewell-message {
+	background-color: #7a5ea7;
+	border: 1px dashed #323232;
+	font-style: italic;
+	font-weight: 400;
 }
 
 section.game-status > h2 {

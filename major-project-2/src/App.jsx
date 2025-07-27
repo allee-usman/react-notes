@@ -1,15 +1,7 @@
 import { useState } from 'react';
 import { languages } from './languagesData';
 import clsx from 'clsx';
-
-/**
- * Goal: Allow the user to start guessing the letters
- *
- * Challenge: TBA
- *
- * Think: what would be the best way to store the user's
- * guessed letters?
- */
+import { getFarewellText } from './utils';
 
 export default function AssemblyEndgame() {
 	//# state values
@@ -32,7 +24,7 @@ export default function AssemblyEndgame() {
 	const isGameWon = currentWord
 		.split('')
 		.every((letter) => guessedLetters.includes(letter));
-	const isGameLost = wrongGuessCount >= languages.length - 1 ? true : false;
+	const isGameLost = wrongGuessCount >= languages.length - 1;
 	const isGameOver = isGameWon || isGameLost ? true : false;
 
 	// #static values
@@ -90,6 +82,7 @@ export default function AssemblyEndgame() {
 		);
 	});
 
+	//# helper functions
 	function savedGuessedLetter(newGuess) {
 		setGuessedLetters((prevGuesses) =>
 			//Method 1
@@ -116,21 +109,31 @@ export default function AssemblyEndgame() {
 	// 	'game-status',
 	// 	isGameWon ? 'won' : 'lost'
 	// );
+
 	const gameStatusClassName = clsx('game-status', {
 		won: isGameWon,
 		lost: isGameLost,
 	});
-	const gameStatusContent = isGameWon ? (
-		<>
-			<h2>You win!</h2>
-			<p>Well done! 🎉</p>
-		</>
-	) : (
-		<>
-			<h2>Game Over!</h2>
-			<p>You Loose! Better start learning Assembly now. 😭</p>
-		</>
-	);
+	function renderGameStatus() {
+		if (!isGameOver) {
+			return null;
+		}
+		if (isGameWon) {
+			return (
+				<>
+					<h2>You win!</h2>
+					<p>Well done! 🎉</p>
+				</>
+			);
+		} else {
+			return (
+				<>
+					<h2>Game Over!</h2>
+					<p>You Loose! Better start learning Assembly now. 😭</p>
+				</>
+			);
+		}
+	}
 
 	return (
 		<main>
@@ -141,9 +144,7 @@ export default function AssemblyEndgame() {
 					from Assembly!
 				</p>
 			</header>
-			<section className={gameStatusClassName}>
-				{isGameOver ? gameStatusContent : undefined}
-			</section>
+			<section className={gameStatusClassName}>{renderGameStatus()}</section>
 			<section className="language-chips">{languageElements}</section>
 			<section className="word">{letterElements}</section>
 			<section className="keyboard">{keyboardElements}</section>
