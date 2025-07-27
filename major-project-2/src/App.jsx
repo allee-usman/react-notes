@@ -12,12 +12,27 @@ import clsx from 'clsx';
  */
 
 export default function AssemblyEndgame() {
+	// state values
 	const [currentWord, setCurrentWord] = useState('react');
 	const [guessedLetters, setGuessedLetters] = useState([]);
-	console.log(guessedLetters);
+	// console.log(guessedLetters);
 
+	// derived values
+	// const wrongGuessCount = countWrongGuesses();
+	// const wrongGuesses = guessedLetters.filter(
+	// 	(letter) => !currentWord.includes(letter)
+	// );
+	// console.log('Wrong Guesses: ', wrongGuesses);
+
+	const wrongGuessCount = guessedLetters.filter(
+		(letter) => !currentWord.includes(letter)
+	).length;
+	console.log('Wrong Guess Count: ', wrongGuessCount);
+
+	// static values
 	const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
+	// Elements arrays
 	const languageElements = languages.map((lang) => {
 		const styles = {
 			backgroundColor: lang.backgroundColor,
@@ -74,6 +89,17 @@ export default function AssemblyEndgame() {
 			prevGuesses.includes(newGuess) ? prevGuesses : [...prevGuesses, newGuess]
 		);
 	}
+
+	// function countWrongGuesses() {
+	// let count = 0;
+	// for (let index = 0; index < guessedLetters.length; index++) {
+	// 	// if (!currentWord.includes(guessedLetters[index])) {
+	// 	// 	count = count + 1;
+	// 	// }
+	// 	currentWord.includes(guessedLetters[index]) ? count : count++;
+	// }
+	// return count;
+	// }
 
 	return (
 		<main>
